@@ -1,0 +1,5 @@
+isStopword
+isJunk
+stripPunctuation
+TEST
+parsefile
