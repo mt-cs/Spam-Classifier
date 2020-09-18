@@ -68,8 +68,7 @@ public class Processor {
      */
     public boolean isJunk(String word) {
         for(int i = 0; i<word.length(); i++){
-            char c = word.charAt(i);
-            if (!Character.isLetter(c)){
+            if (!Character.isLetter(word.charAt(i))){
                 return true;
             }
         }
@@ -83,12 +82,13 @@ public class Processor {
      * @return wordStripped
      */
     public String stripPunctuation (String w) {
-        String wordStripped = "";
-        int i = w.length()-1;
-        if(!Character.isLetter(w.charAt(i))) {
-            wordStripped = w.substring(0, i);
+        if(w.length() != 0) {
+            int i = w.length() - 1;
+            if (!Character.isLetter(w.charAt(i))) {
+                return w.substring(0, i);
+            }
         }
-        return wordStripped;
+        return w;
     }
 
     /**
@@ -101,7 +101,7 @@ public class Processor {
         ArrayList<String> lowerCaseWords = new ArrayList<>();
         try{
             Scanner s = new Scanner(new File(filename));
-            while(s.hasNextLine()){
+            while(s.hasNext()){
                 String line = s.nextLine();
                 //TODO: check line split
                 String[] words = line.split(" ");

@@ -28,6 +28,7 @@ public class FreqDist {
     }
 
     public void add(String newWord) {
+
         int val;
         totalCount++;
         if (frequencies.containsKey(newWord)) {
