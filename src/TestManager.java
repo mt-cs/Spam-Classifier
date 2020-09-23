@@ -56,7 +56,6 @@ public class TestManager {
         }
 
         /* take 50 spam test emails, compute loglikelihood */
-
         File hamTestFolder = new File("hamtest");
         for (String filename : hamTestFolder.list()) {
             p = new Processor("hamtest/" + filename);
