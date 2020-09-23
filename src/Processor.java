@@ -101,17 +101,16 @@ public class Processor {
         ArrayList<String> lowerCaseWords = new ArrayList<>();
         try{
             Scanner s = new Scanner(new File(filename));
-            while(s.hasNext()){
+            while(s.hasNextLine()){
                 String line = s.nextLine();
                 //TODO: check line split
                 String[] words = line.split(" ");
                 for (String w: words){
                     String parseWord = w.toLowerCase();
                     parseWord = stripPunctuation(parseWord);
-                    if(isStopword(parseWord) || isJunk(parseWord)){
+                    if(isStopword(parseWord) || isJunk(parseWord) || parseWord.length()==0){
                         continue;
                     }
-                    parseWord = stripPunctuation(parseWord);
                     lowerCaseWords.add(parseWord);
                 }
             }
