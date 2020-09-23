@@ -29,7 +29,6 @@ public class TestManager {
         }
 
         /* read in 100 ham and store in a FreqDist */
-
         File hamFolder = new File("hamtrain");
         for (String filename : hamFolder.list()) {
             p = new Processor("hamtrain/" + filename);
@@ -41,7 +40,6 @@ public class TestManager {
         }
 
         /* take 50 ham test emails, compute loglikelihood */
-
         File spamTestFolder = new File("spamtest");
         for (String filename : spamTestFolder.list()) {
             p = new Processor("spamtest/" + filename);

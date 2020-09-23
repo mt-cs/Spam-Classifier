@@ -7,6 +7,7 @@ import java.util.HashMap;
  */
 
 public class FreqDist {
+    // TODO: set frequencies to private
     HashMap<String, Integer> frequencies;
     int totalCount;
 
@@ -69,7 +70,7 @@ public class FreqDist {
     /**
      * if a word is not present in our frequency dictionary, assume it has a count of 1.
      * @param newWord
-     * @return
+     * @return frequencies.get(newWord) if present or -1 if not
      */
     public int get(String newWord) {
         if(frequencies.containsKey(newWord)) {

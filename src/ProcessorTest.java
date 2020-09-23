@@ -9,6 +9,11 @@ public class ProcessorTest {
         Processor processor1 = new Processor("/Users/marisatania/IdeaProjects/project-1-spam-classifier-mt-cs/spamtrain/0004.1874ab60c71f0b31b580f313a3f6e777");
         parsedWords = processor1.parseFile();
 
+        boolean val = processor1.isStopword("is");
+        System.out.println("Value should be true: " + val);
+        boolean val2 = processor1.isStopword("dog");
+        System.out.println("Value should be false: " + val2);
+
         String test = "eat21331!";
         test = processor1.stripPunctuation(test);
         System.out.println(processor1.isStopword(test));
