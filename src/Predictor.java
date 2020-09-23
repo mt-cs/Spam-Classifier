@@ -14,7 +14,7 @@ public class Predictor {
      * @return sum of the log of the frequency of each word
      */
     public double computeLogLikelihood(FreqDist fd, ArrayList<String> wordsToScore) {
-        Double sum = 0.0;
+        double sum = 0.0;
 
         for(String w: wordsToScore){
                 sum += Math.log(fd.get(w)/(double)fd.getTotalCount());
