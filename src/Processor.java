@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * The Processor class will open a file and tokenize it.
+ *  * @author marisatania
  */
 public class Processor {
     public static final String[] stopwords = {"i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "you're",
@@ -103,7 +104,6 @@ public class Processor {
             Scanner s = new Scanner(new File(filename));
             while(s.hasNextLine()){
                 String line = s.nextLine();
-                //TODO: check line split
                 String[] words = line.split(" ");
                 for (String w: words){
                     String parseWord = w.toLowerCase();
