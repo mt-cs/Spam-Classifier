@@ -17,7 +17,7 @@ public class TestManager {
         Processor p;
         Predictor pr = new Predictor();
         double spamval, hamval;
-        int totalSpam = 0, totalHam=0;
+        int correctSpam = 0, correctHam=0, incorrectSpam = 0, incorrectHam = 0;
 
         /* read in 100 spam and store in a FreqDist. */
         File spamFolder = new File("spamtrain");
@@ -27,7 +27,6 @@ public class TestManager {
             for (String w : words) {
                 spam.add(w);
             }
-
         }
 
         /* read in 100 ham and store in a FreqDist */
@@ -38,7 +37,6 @@ public class TestManager {
             for (String w : words) {
                 ham.add(w);
             }
-
         }
 
         /* take 50 ham test emails, compute loglikelihood */
@@ -51,9 +49,10 @@ public class TestManager {
             System.out.println(spamval + " " + hamval);
             if (spamval > hamval) {
                 System.out.println("Correct");
-                totalSpam++;
+                correctSpam++;
             } else {
                 System.out.println("Incorrect");
+                incorrectSpam++;
             }
         }
 
@@ -67,15 +66,22 @@ public class TestManager {
             System.out.println(spamval + " " + hamval);
             if (spamval < hamval) {
                 System.out.println("Correct");
-                totalHam++;
+                correctHam++;
             } else {
                 System.out.println("Incorrect");
+                incorrectHam++;
             }
         }
 
-        /* Extend the TestManager to keep track of how many emails of each type were classified correctly. */
-        System.out.println("\nTotal spam: " + totalSpam);
-        System.out.println("Total ham: " + totalHam);
+        /* Display how many emails of each type were classified correctly. */
+        System.out.println("\nSPAM");
+        System.out.println("==================");
+        System.out.println("Correct spam: " + correctSpam);
+        System.out.println("Incorrect spam: " + incorrectSpam);
+        System.out.println("\nHAM");
+        System.out.println("==================");
+        System.out.println("Correct ham: " + correctHam);
+        System.out.println("Incorrect ham: " + incorrectHam);
     }
 }
 
