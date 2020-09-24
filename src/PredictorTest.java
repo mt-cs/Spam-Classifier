@@ -13,7 +13,6 @@ public class PredictorTest {
 //        for (String w: words){
 //            testList.add(w);
 //        }
-
         FreqDist fd = new FreqDist();
         Predictor p = new Predictor();
         for (String word : testList){

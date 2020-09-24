@@ -1,13 +1,15 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
- * Extend this to evaluate the fraction of spam and ham emails your classifier identifies correctly.
+ * This method calls Processor, parse file, count words using FreqDist,
+ * and compute loglikelihood using Predictor
  */
 public class TestManager {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         FreqDist spam = new FreqDist();
         FreqDist ham = new FreqDist();
 
@@ -19,7 +21,7 @@ public class TestManager {
 
         /* read in 100 spam and store in a FreqDist. */
         File spamFolder = new File("spamtrain");
-        for (String filename : spamFolder.list()) {
+        for (String filename : Objects.requireNonNull(spamFolder.list())) {
             p = new Processor("spamtrain/" + filename);
             words = p.parseFile();
             for (String w : words) {
@@ -30,7 +32,7 @@ public class TestManager {
 
         /* read in 100 ham and store in a FreqDist */
         File hamFolder = new File("hamtrain");
-        for (String filename : hamFolder.list()) {
+        for (String filename : Objects.requireNonNull(hamFolder.list())) {
             p = new Processor("hamtrain/" + filename);
             words = p.parseFile();
             for (String w : words) {
@@ -41,7 +43,7 @@ public class TestManager {
 
         /* take 50 ham test emails, compute loglikelihood */
         File spamTestFolder = new File("spamtest");
-        for (String filename : spamTestFolder.list()) {
+        for (String filename : Objects.requireNonNull(spamTestFolder.list())) {
             p = new Processor("spamtest/" + filename);
             words = p.parseFile();
             spamval = pr.computeLogLikelihood(spam, words);
@@ -57,7 +59,7 @@ public class TestManager {
 
         /* take 50 spam test emails, compute loglikelihood */
         File hamTestFolder = new File("hamtest");
-        for (String filename : hamTestFolder.list()) {
+        for (String filename : Objects.requireNonNull(hamTestFolder.list())) {
             p = new Processor("hamtest/" + filename);
             words = p.parseFile();
             spamval = pr.computeLogLikelihood(spam, words);
@@ -71,7 +73,8 @@ public class TestManager {
             }
         }
 
-        System.out.println("Total spam: " + totalSpam);
+        /* Extend the TestManager to keep track of how many emails of each type were classified correctly. */
+        System.out.println("\nTotal spam: " + totalSpam);
         System.out.println("Total ham: " + totalHam);
     }
 }

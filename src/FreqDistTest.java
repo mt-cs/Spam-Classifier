@@ -4,6 +4,7 @@ import java.util.HashMap;
 /**
  * this method test out all methods in FreqDist.java
  */
+
 public class FreqDistTest {
     public static void main(String[] args) {
         /* Test out methods */
